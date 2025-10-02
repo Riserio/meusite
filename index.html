@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Plataforma Comercial</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="login-container">
+  <img src="https://s3.amazonaws.com/bboneapp/Upload/logo/123/1717423126775_120(4).png" alt="Logo BP">
+  <h2>Login Plataforma</h2>
+  <input type="email" id="loginEmail" placeholder="Email">
+  <input type="password" id="loginSenha" placeholder="Senha">
+  <span class="show-password" onclick="toggleSenha()">Mostrar senha</span>
+  <button onclick="login()">ENTRAR</button>
+</div>
+
+<!-- PLATAFORMA -->
+<div id="plataforma" style="display:none;">
+  <nav id="menuLateral">
+    <div class="logo">
+      <img id="fotoUsuario" class="avatar-left" src="img/avatar.png" alt="Foto do usuário">
+      <img src="https://s3.amazonaws.com/bboneapp/Upload/logo/123/1717423126775_120(4).png" alt="Logo BP">
+    </div>
+    <h2>Menu</h2>
+    <p>Olá, <span id="nomeUsuario"></span></p>
+    <p><b><span id="papelUsuario"></span></b></p>
+    <button onclick="mostrar('dashboard')">Início</button>
+    <button id="btnCorretores" onclick="mostrar('corretores')">Corretores</button>
+    <button id="btnLeads" onclick="mostrar('leads')">Leads</button>
+    <button onclick="mostrar('atendimentos')">Atendimentos</button>
+    <button onclick="logout()">Sair</button>
+  </nav>
+
+  <main>
+    <div class="container">
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="active">
+      <div class="welcome">
+        <h2>Bem-vindo, <span id="bemVindo"></span>!</h2>
+        <div class="links-topo">
+  <a href="https://bpmensal.com.br" target="_blank">BP MENSAL</a>
+  <a href="https://adm.bpseguradora.com.br" target="_blank">BP ANUAL</a>
+</div>
+<div id="clock"></div>
+  </div>
+
+  <!-- RESUMOS -->
+  <div class="resumo">
+    <div class="card corretores">
+      <h3>Corretores</h3>
+      <p><span id="qtdCorretores">0</span></p>
+    </div>
+    <div class="card leads">
+      <h3>Leads</h3>
+      <p><span id="qtdLeads">0</span></p>
+    </div>
+    <div class="card aberto">
+      <h3>Atendimentos em Aberto</h3>
+      <p><span id="qtdAberto">0</span></p>
+    </div>
+    <div class="card andamento">
+      <h3>Atendimentos em Andamento</h3>
+      <p><span id="qtdAndamento">0</span></p>
+    </div>
+    <div class="card finalizado">
+      <h3>Atendimentos Finalizados</h3>
+      <p><span id="qtdFinalizado">0</span></p>
+    </div>
+  </div>
+      </div>
+    </section>
+
+    <!-- CORRETORES -->
+    <section id="corretores">
+      <h1>Cadastro de Corretores</h1>
+      <form id="formCorretor">
+        <input type="text" id="nomeCorretor" placeholder="Nome" required>
+        <input type="text" id="cnpjCorretor" placeholder="CNPJ" required>
+        <select id="estadoCorretor" required></select>
+        <select id="cidadeCorretor" required></select>
+        <input type="text" id="celularCorretor" placeholder="Celular" required>
+        <input type="email" id="emailCorretor" placeholder="Email" required>
+        <input type="password" id="senhaCorretor" placeholder="Senha" required>
+        <input type="file" id="fotoCorretor" accept="image/png, image/jpeg, image/jpg">
+        <select id="papelCorretor" required>
+          <option value="comercial">Comercial</option>
+          <option value="master">Master</option>
+        </select>
+        <button type="submit">Cadastrar</button>
+      </form>
+      <div class="upload-container">
+        <label>Importar tabela de Corretores:</label>
+        <input type="file" id="uploadCorretores" accept=".csv,.xlsx">
+      </div>
+      <table id="tabelaCorretores">
+        <thead>
+          <tr><th>Foto</th><th>Nome</th><th>CNPJ</th><th>Estado</th><th>Cidade</th><th>Celular</th><th>Email</th><th>Papel</th><th>Ações</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- LEADS -->
+    <section id="leads">
+      <h1>Cadastro de Leads</h1>
+      <form id="formLead">
+        <input type="text" id="nomeLead" placeholder="Nome do Cliente" required>
+        <input type="text" id="celularLead" placeholder="Celular">
+        <input type="email" id="emailLead" placeholder="Email">
+        <input type="text" id="cidadeLead" placeholder="Cidade">
+        <input type="text" id="estadoLead" placeholder="Estado">
+        <select id="corretorLead" required></select>
+        <button type="submit">Cadastrar Lead</button>
+      </form>
+      <div class="upload-container">
+        <label>Importar tabela de Leads:</label>
+        <input type="file" id="uploadLeads" accept=".csv,.xlsx">
+      </div>
+      <table id="tabelaLeads">
+        <thead>
+          <tr><th>Cliente</th><th>Celular</th><th>Email</th><th>Cidade</th><th>Estado</th><th>Corretor</th><th>Ações</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <!-- ATENDIMENTOS -->
+    <section id="atendimentos">
+      <h1>Atendimentos</h1>
+      <form id="formAtendimento">
+        <select id="clienteAtendimento" required>
+          <option value="">Selecione o cliente</option>
+        </select>
+        <input type="text" id="assuntoAtendimento" placeholder="Assunto" required>
+        <select id="statusAtendimento" required>
+          <option value="Em aberto">Em aberto</option>
+          <option value="Em andamento">Em andamento</option>
+          <option value="Finalizado">Finalizado</option>
+        </select>
+        <input type="number" id="cotacoesAtendimento" placeholder="Qtd. Cotações" min="0" required>
+        <button type="submit">Abrir Atendimento</button>
+      </form>
+      <table id="tabelaAtendimentos">
+        <thead>
+          <tr><th>Cliente</th><th>Corretor</th><th>Data</th><th>Assunto</th><th>Status</th><th>Cotações</th><th>Ações</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+      </div>
+  </main>
+</div>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+<script src="js/corretores.js"></script>
+<script src="js/leads.js"></script>
+<script src="js/atendimentos.js"></script>
+
+</body>
+</html>
