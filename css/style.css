@@ -1,0 +1,207 @@
+body { font-family: Arial, sans-serif; margin:0; background:#f2f2f2; }
+/* LOGIN */ .login-container { background:white; padding:30px; border-radius:10px; box-shadow:0 0 15px rgba(0,0,0,0.3); width:350px; margin:100px auto; text-align:center; }
+.login-container img { width:140px; margin-bottom:15px; }
+.login-container input { width:100%; padding:12px; margin:10px 0; border-radius:5px; border:1px solid #ccc; font-size:16px; }
+.login-container button { width:100%; padding:12px; font-size:18px; background:#2c50bb; color:white; border:none; border-radius:6px; cursor:pointer; margin-top:10px; }
+.login-container button:hover { background:#14215e; }
+.show-password { margin-top:5px; font-size:14px; cursor:pointer; color:#2c50bb; display:block; }
+/* SIDEBAR */ nav { width: 200px; background: #0b1d3a; color: #fff; min-height: 100vh; padding: 20px 10px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; }
+nav .logo { text-align:center; margin-bottom:15px; } nav .logo img { width:100px; } nav h2 { font-size: 15px; margin-bottom:10px; } nav p { font-size: 13px; margin:4px 0; }
+nav button { background: transparent; border: none; color: #fff; padding: 10px; text-align: left; border-radius: 6px; margin: 3px 0; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+nav button:hover { background: rgba(255,255,255,0.1); }
+/* CONTEÚDO */ main { margin-left:220px; padding:20px; } section{display:none;} section.active{display:block;} table{border-collapse:collapse;width:100%;margin-top:20px;} th,td{border:1px solid #ccc;padding:8px;text-align:left;} th{background:#f2f2f2;} tr:nth-child(even){background:#fafafa;}
+button.action-btn{ padding:5px 10px;margin:2px;border:none; border-radius:4px;background:#2c50bb;color:white;cursor:pointer; } button.action-btn:hover{background:#14215e;}
+/* FORMULÁRIOS */ form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:15px; margin-top:15px; } form input, form select, form button { width:100%; padding:10px; border-radius:5px; border:1px solid #ccc; font-size:14px; } form button { background:#2c50bb; color:white; font-weight:bold; cursor:pointer; border:none; grid-column:span 2; } form button:hover { background:#14215e; }
+/* UPLOAD FILE */ .upload-container { grid-column: 1 / -1; background:#f7f7f7; padding:10px; border-radius:5px; border:1px dashed #ccc; text-align:center; }
+/* DASHBOARD */ #dashboard { display: grid; gap:20px; } .welcome { background:white; padding:20px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); } .welcome h2 { margin:0 0 10px; } #clock { font-size:14px; color:#555; }
+
+/* LINKS NO DASHBOARD */
+.welcome {
+  position: relative;
+}
+.welcome .links-topo {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+}
+.welcome .links-topo a {
+  background: #2c50bb;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: background 0.3s;
+}
+.welcome .links-topo a:hover {
+  background: #14215e;
+}
+
+
+/* ====== RESUMO EM CARDS COLORIDOS (APENAS NO DASHBOARD) ====== */
+#dashboard .resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#dashboard .card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#dashboard .card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dashboard .card p {
+  font-size: 28px;
+  margin: 0;
+}
+
+/* cores */
+#dashboard .card.corretores { background: #2c50bb; }
+#dashboard .card.leads { background: #1e88e5; }
+#dashboard .card.aberto { background: #ff9800; }
+#dashboard .card.andamento { background: #ffc107; color:#333; }
+#dashboard .card.finalizado { background: #4caf50; }
+
+
+/* ====== CARDS COLORIDOS NO INÍCIO ====== */
+#dashboard .resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+#dashboard .card {
+  padding: 20px;
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+#dashboard .card h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+#dashboard .card p {
+  font-size: 26px;
+  margin: 0;
+}
+
+/* Cores */
+#dashboard .card.corretores { background: #2c50bb; }
+#dashboard .card.leads { background: #1e88e5; }
+#dashboard .card.aberto { background: #ff9800; }
+#dashboard .card.andamento { background: #ffc107; color:#333; }
+#dashboard .card.finalizado { background: #4caf50; }
+
+
+/* ===== Responsive layout, gutters, and scroll ===== */
+* { box-sizing: border-box; }
+
+html, body { height: 100%; margin: 0; }
+body { overflow-y: auto; background: #f2f2f2; }
+
+:root {
+  --container-max: 1200px;
+  --side-gap: 16px;
+  --side-gap-lg: 24px;
+}
+
+/* Centered container with side gutters */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--side-gap);
+}
+@media (min-width: 1024px) {
+  .container { padding: 0 var(--side-gap-lg); }
+}
+
+/* Make sure content can scroll above a fixed footer */
+main {
+  padding: 20px 0 90px; /* bottom padding so footer doesn't cover content */
+}
+
+/* Sections spacing */
+section { margin-top: 20px; }
+section.active { display: block; }
+
+/* Dashboard cards responsive grid */
+#dashboard .resumo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+/* Footer menu responsive */
+#menuFooter {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #0b1d3a;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-top: 2px solid #2c50bb;
+  z-index: 100;
+  min-height: 56px;
+}
+
+#menuFooter button {
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+  flex: 0 1 auto;
+}
+
+#menuFooter button:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+@media (min-width: 600px) {
+  #menuFooter { justify-content: space-around; }
+}
+
+/* Keep tables and forms within container width */
+table { width: 100%; border-collapse: collapse; }
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.logo img.avatar-left {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2c50bb;
+}
